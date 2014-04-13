@@ -72,7 +72,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Daniel Tull";
 			};
-			buildConfigurationList = 2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "DCTOpenSSL" */;
+			buildConfigurationList = 2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "openssl" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -242,7 +242,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "DCTOpenSSL" */ = {
+		2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "openssl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2438DD8518FA877100331C0B /* Debug */,
@@ -258,6 +258,7 @@
 				2438DDB318FA87EE00331C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2438DDDB18FA880700331C0B /* Build configuration list for PBXNativeTarget "crypto" */ = {
 			isa = XCConfigurationList;
@@ -266,6 +267,7 @@
 				2438DDDD18FA880700331C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
