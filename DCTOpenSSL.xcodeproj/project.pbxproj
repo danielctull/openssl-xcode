@@ -6,48 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2438DD8F18FA87EE00331C0B /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
+/* Begin PBXContainerItemProxy section */
+		2438DDE118FA8BB000331C0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2438DD5C18FA877000331C0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2438DDBA18FA880600331C0B;
+			remoteInfo = crypto;
 		};
-		2438DDB918FA880600331C0B /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2438DD9118FA87EE00331C0B /* libssl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libssl.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2438DDBB18FA880600331C0B /* libcrypto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcrypto.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		2438DD8E18FA87EE00331C0B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2438DDB818FA880600331C0B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2438DD5B18FA877000331C0B = {
@@ -65,13 +37,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2438DDB118FA87EE00331C0B /* Build configuration list for PBXNativeTarget "ssl" */;
 			buildPhases = (
-				2438DD8D18FA87EE00331C0B /* Sources */,
-				2438DD8E18FA87EE00331C0B /* Frameworks */,
-				2438DD8F18FA87EE00331C0B /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2438DDE218FA8BB000331C0B /* PBXTargetDependency */,
 			);
 			name = ssl;
 			productName = ssl;
@@ -82,9 +52,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2438DDDB18FA880700331C0B /* Build configuration list for PBXNativeTarget "crypto" */;
 			buildPhases = (
-				2438DDB718FA880600331C0B /* Sources */,
-				2438DDB818FA880600331C0B /* Frameworks */,
-				2438DDB918FA880600331C0B /* CopyFiles */,
+				2438DDE318FA8BB400331C0B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -122,22 +90,29 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		2438DD8D18FA87EE00331C0B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		2438DDE318FA8BB400331C0B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2438DDB718FA880600331C0B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputPaths = (
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = ./build.sh;
 		};
-/* End PBXSourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2438DDE218FA8BB000331C0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2438DDBA18FA880600331C0B /* crypto */;
+			targetProxy = 2438DDE118FA8BB000331C0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2438DD8518FA877100331C0B /* Debug */ = {
