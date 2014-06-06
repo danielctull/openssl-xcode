@@ -44,9 +44,6 @@ mkdir -p "$TARGET_BUILD_DIR"
 lipo -create "$CONFIGURATION_TEMP_DIR/"*-libcrypto.a -output "$TARGET_BUILD_DIR/libcrypto.a"
 lipo -create "$CONFIGURATION_TEMP_DIR/"*-libssl.a -output "$TARGET_BUILD_DIR/libssl.a"
 
-mkdir -p "$TARGET_BUILD_DIR/include"
-cp -r "include/openssl" "$TARGET_BUILD_DIR/include/openssl"
-
 echo "***** removing temporary files from $CONFIGURATION_TEMP_DIR *****"
 rm -f "$CONFIGURATION_TEMP_DIR/"*-libcrypto.a
 rm -f "$CONFIGURATION_TEMP_DIR/"*-libssl.a
