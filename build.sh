@@ -1,12 +1,26 @@
-# check whether libcrypto.a already exists - we'll only build if it does not
-if [ -f  "$TARGET_BUILD_DIR/libssl.a" ]; then
-	echo "Using previously-built libary $TARGET_BUILD_DIR/libssl.a - skipping build"
-	echo "To force a rebuild clean project and clean dependencies"
-	exit 0;
-fi
-
 # figure out the right set of build architectures for this run
 BUILDARCHS="$ARCHS"
+
+# check whether libcrypto.a already exists - we'll only build if it does not
+if [ -f  "$TARGET_BUILD_DIR/libssl.a" ]; then
+
+	LIPOINFO=`xcrun lipo -info "$TARGET_BUILD_DIR/libssl.a"`
+	HASARCHS=true
+
+	for BUILDARCH in $BUILDARCHS
+	do
+		if [[ $LIPOINFO != *$BUILDARCH* ]]; then
+			HASARCHS=false
+			break
+		fi
+	done
+
+	if [ $HASARCHS == true ]; then
+		echo "Using previously-built libary $TARGET_BUILD_DIR/libssl.a - skipping build"
+		echo "To force a rebuild clean project and clean dependencies"
+		exit 0;
+	fi
+fi
 
 echo "***** creating universal binary for architectures: $BUILDARCHS *****"
 
