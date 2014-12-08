@@ -37,9 +37,6 @@
 		244E6A6319424F5000FA7AAD /* engine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1519424F4300FA7AAD /* engine.h */; };
 		244E6A6419424F5000FA7AAD /* err.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1619424F4300FA7AAD /* err.h */; };
 		244E6A6519424F5000FA7AAD /* evp.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1719424F4300FA7AAD /* evp.h */; };
-		244E6A6619424F5000FA7AAD /* fips.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1819424F4300FA7AAD /* fips.h */; };
-		244E6A6719424F5000FA7AAD /* fips_rand.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1919424F4300FA7AAD /* fips_rand.h */; };
-		244E6A6819424F5000FA7AAD /* fipssyms.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1A19424F4300FA7AAD /* fipssyms.h */; };
 		244E6A6919424F5000FA7AAD /* hmac.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1B19424F4300FA7AAD /* hmac.h */; };
 		244E6A6A19424F5000FA7AAD /* idea.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1C19424F4300FA7AAD /* idea.h */; };
 		244E6A6B19424F5100FA7AAD /* krb5_asn.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 244E6A1D19424F4300FA7AAD /* krb5_asn.h */; };
@@ -134,9 +131,6 @@
 				244E6A6319424F5000FA7AAD /* engine.h in CopyFiles */,
 				244E6A6419424F5000FA7AAD /* err.h in CopyFiles */,
 				244E6A6519424F5000FA7AAD /* evp.h in CopyFiles */,
-				244E6A6619424F5000FA7AAD /* fips.h in CopyFiles */,
-				244E6A6719424F5000FA7AAD /* fips_rand.h in CopyFiles */,
-				244E6A6819424F5000FA7AAD /* fipssyms.h in CopyFiles */,
 				244E6A6919424F5000FA7AAD /* hmac.h in CopyFiles */,
 				244E6A6A19424F5000FA7AAD /* idea.h in CopyFiles */,
 				244E6A6B19424F5100FA7AAD /* krb5_asn.h in CopyFiles */,
@@ -220,9 +214,6 @@
 		244E6A1519424F4300FA7AAD /* engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = engine.h; sourceTree = "<group>"; };
 		244E6A1619424F4300FA7AAD /* err.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = err.h; sourceTree = "<group>"; };
 		244E6A1719424F4300FA7AAD /* evp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = evp.h; sourceTree = "<group>"; };
-		244E6A1819424F4300FA7AAD /* fips.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fips.h; sourceTree = "<group>"; };
-		244E6A1919424F4300FA7AAD /* fips_rand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fips_rand.h; sourceTree = "<group>"; };
-		244E6A1A19424F4300FA7AAD /* fipssyms.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fipssyms.h; sourceTree = "<group>"; };
 		244E6A1B19424F4300FA7AAD /* hmac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
 		244E6A1C19424F4300FA7AAD /* idea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = idea.h; sourceTree = "<group>"; };
 		244E6A1D19424F4300FA7AAD /* krb5_asn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = krb5_asn.h; sourceTree = "<group>"; };
@@ -313,9 +304,6 @@
 				244E6A1519424F4300FA7AAD /* engine.h */,
 				244E6A1619424F4300FA7AAD /* err.h */,
 				244E6A1719424F4300FA7AAD /* evp.h */,
-				244E6A1819424F4300FA7AAD /* fips.h */,
-				244E6A1919424F4300FA7AAD /* fips_rand.h */,
-				244E6A1A19424F4300FA7AAD /* fipssyms.h */,
 				244E6A1B19424F4300FA7AAD /* hmac.h */,
 				244E6A1C19424F4300FA7AAD /* idea.h */,
 				244E6A1D19424F4300FA7AAD /* krb5_asn.h */,
