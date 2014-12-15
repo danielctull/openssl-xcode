@@ -262,16 +262,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		2421BBBB1A3F076A00E61B19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2438DDBB18FA880600331C0B /* libcrypto.a */,
+				2438DD9118FA87EE00331C0B /* libssl.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2438DD5B18FA877000331C0B = {
 			isa = PBXGroup;
 			children = (
-				244E69F919424F4300FA7AAD /* openssl */,
-				2438DD9118FA87EE00331C0B /* libssl.a */,
-				2438DDBB18FA880600331C0B /* libcrypto.a */,
+				244E69F919424F4300FA7AAD /* OpenSSL */,
+				2421BBBB1A3F076A00E61B19 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		244E69F919424F4300FA7AAD /* openssl */ = {
+		244E69F919424F4300FA7AAD /* OpenSSL */ = {
 			isa = PBXGroup;
 			children = (
 				244E69FA19424F4300FA7AAD /* aes.h */,
@@ -350,7 +358,7 @@
 				244E6A4619424F4300FA7AAD /* x509_vfy.h */,
 				244E6A4719424F4300FA7AAD /* x509v3.h */,
 			);
-			name = openssl;
+			name = OpenSSL;
 			path = openssl/include/openssl;
 			sourceTree = "<group>";
 		};
@@ -397,7 +405,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Daniel Tull";
 			};
-			buildConfigurationList = 2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "openssl" */;
+			buildConfigurationList = 2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "OpenSSL" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -409,8 +417,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2438DD9018FA87EE00331C0B /* ssl */,
 				2438DDBA18FA880600331C0B /* crypto */,
+				2438DD9018FA87EE00331C0B /* ssl */,
 			);
 		};
 /* End PBXProject section */
@@ -471,7 +479,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -502,7 +509,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -514,10 +520,6 @@
 				DSTROOT = /tmp/ssl.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ssl/ssl-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -567,7 +569,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "openssl" */ = {
+		2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "OpenSSL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2438DD8518FA877100331C0B /* Debug */,
