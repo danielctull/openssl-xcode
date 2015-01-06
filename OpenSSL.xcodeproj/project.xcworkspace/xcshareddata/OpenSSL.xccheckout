@@ -26,7 +26,7 @@
 		<key>8C340C33C6D4C828D7EB6178408D5E4A923742E6</key>
 		<string>../..</string>
 		<key>EEFCF39767E01541D922C36D952EA2E0C2D6756F</key>
-		<string>../..openssl/</string>
+		<string>../..openssl</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>git://github.com/danielctull/openssl-xcode</string>
@@ -48,17 +48,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EEFCF39767E01541D922C36D952EA2E0C2D6756F</string>
+			<string>8C340C33C6D4C828D7EB6178408D5E4A923742E6</string>
 			<key>IDESourceControlWCCName</key>
-			<string>openssl</string>
+			<string>OpenSSL</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8C340C33C6D4C828D7EB6178408D5E4A923742E6</string>
+			<string>EEFCF39767E01541D922C36D952EA2E0C2D6756F</string>
 			<key>IDESourceControlWCCName</key>
-			<string>OpenSSL</string>
+			<string>OpenSSLopenssl</string>
 		</dict>
 	</array>
 </dict>
