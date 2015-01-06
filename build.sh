@@ -1,68 +1,96 @@
-# figure out the right set of build architectures for this run
-BUILDARCHS="$ARCHS"
+function libHasArchs() {
+	LIB=$1
 
-# check whether libcrypto.a already exists - we'll only build if it does not
-if [ -f  "$TARGET_BUILD_DIR/libssl.a" ]; then
+	if [ ! -f "$LIB" ]
+	then
+		return 1
+	fi
+	
+	LIPOINFO=`xcrun lipo -info "$LIB"`
 
-	LIPOINFO=`xcrun lipo -info "$TARGET_BUILD_DIR/libssl.a"`
-	HASARCHS=true
-
-	for BUILDARCH in $BUILDARCHS
+	for ARCH in $ARCHS
 	do
-		if [[ $LIPOINFO != *$BUILDARCH* ]]; then
-			HASARCHS=false
-			break
+		if [[ $LIPOINFO != *"$ARCH"* ]]
+		then		
+			return 1
 		fi
 	done
 
-	if [ $HASARCHS == true ]; then
-		echo "Using previously-built libary $TARGET_BUILD_DIR/libssl.a - skipping build"
-		echo "To force a rebuild clean project and clean dependencies"
-		exit 0;
-	fi
+	return 0
+}
+
+REBUILDSTRING="To force a rebuild do a full project clean"
+LIBSSLPATH="${TARGET_BUILD_DIR}/libssl.a"
+LIBCRYPTOPATH="${TARGET_BUILD_DIR}/libcrypto.a"
+
+if libHasArchs "$LIBCRYPTOPATH" && libHasArchs "$LIBSSLPATH"
+then
+  echo "Using existing builds for libssl.a and libcrypto.a"
+  echo "$REBUILDSTRING"
+  exit 0
 fi
 
-echo "***** creating universal binary for architectures: $BUILDARCHS *****"
+echo "Building for architectures: $ARCHS"
 
 if [ "$SDKROOT" != "" ]; then
-	ISYSROOT="-isysroot $SDKROOT"
+	isysroot="-isysroot ${SDKROOT}"
 fi
 
-OPENSSL_OPTIONS="no-krb5 no-gost"
+ASM_DEF="-UOPENSSL_BN_ASM_PART_WORDS"
+LIBOUTPUTPATH="${TARGET_TEMP_DIR}"
+LOGPATH="${TARGET_TEMP_DIR}/build.log"
+rm -rf $LOGPATH
 
-cd "$SRCROOT/openssl"
+cd "${SRCROOT}/openssl"
 
-for BUILDARCH in $BUILDARCHS
+for ARCH in $ARCHS
 do
+  
+  LIBSSLARCHPATH="${LIBOUTPUTPATH}/$ARCH-libssl.a"  
+  LIBCRYPTOARCHPATH="${LIBOUTPUTPATH}/$ARCH-libcrypto.a"
+  
+  if libHasArchs "$LIBSSLARCHPATH" && libHasArchs "$LIBCRYPTOARCHPATH"
+  then
+    echo "Using existing build for architecture: $ARCH"
+    echo "$REBUILDSTRING"
+    continue
+  fi
+  
+	echo "Building for architecture: $ARCH"
+  
+  configureTarget="iphoneos-cross"
+  if [ "$ARCH" == "i386" ]; then
+    configureTarget="darwin-i386-cc"
+  elif [ "$ARCH" == "x86_64" ]; then
+    configureTarget="darwin64-x86_64-cc"
+  fi
 
-	echo "Building for architecture $BUILDARCH"
+  configureOptions="$configureTarget"
+  archFlag="-arch $ARCH"
 
-	make clean > /dev/null
+  echo "Configure with options: $configureOptions"
+  ./config $configureOptions &> $LOGPATH
 
-	# disable assembler
-	echo "***** configuring WITHOUT assembler optimizations based on architecture $BUILDARCH and build style $BUILD_STYLE *****"
-	./config no-asm $OPENSSL_OPTIONS > /dev/null
-	ASM_DEF="-UOPENSSL_BN_ASM_PART_WORDS"
+  make clean &> $LOGPATH
+  
+  makeOptions="CFLAG=\"-D_DARWIN_C_SOURCE $archFlag $isysroot\" SHARED_LDFLAGS=\"$archFlag -Os\""
+  echo "Make with options: $makeOptions" 
+  make CFLAG="-D_DARWIN_C_SOURCE $archFlag $isysroot" SHARED_LDFLAGS="$archFlag -Os" &> $LOGPATH
 
-	make CFLAG="-D_DARWIN_C_SOURCE $ASM_DEF -arch $BUILDARCH $ISYSROOT -Wno-unused-value -Wno-parentheses" SHARED_LDFLAGS="-arch $BUILDARCH -dynamiclib" > /dev/null
+  echo "Copy libssl.a to ${LIBSSLARCHPATH}"
+  cp libssl.a "${LIBSSLARCHPATH}" &> $LOGPATH
 
-	echo "***** copying intermediate libraries to $CONFIGURATION_TEMP_DIR/$BUILDARCH-*.a *****"
-	cp libcrypto.a "$CONFIGURATION_TEMP_DIR"/$BUILDARCH-libcrypto.a
-	cp libssl.a "$CONFIGURATION_TEMP_DIR"/$BUILDARCH-libssl.a
+  echo "Copy libcrypto.a to ${LIBCRYPTOARCHPATH}"
+  cp libcrypto.a "${LIBCRYPTOARCHPATH}" &> $LOGPATH
+
+  make clean &> $LOGPATH
 done
 
-make clean > /dev/null
+echo "Lipo"
+mkdir -p "${TARGET_BUILD_DIR}"
+lipo -create "${LIBOUTPUTPATH}/"*-libssl.a -output "$LIBSSLPATH" &> $LOGPATH
+lipo -create "${LIBOUTPUTPATH}/"*-libcrypto.a -output "$LIBCRYPTOPATH" &> $LOGPATH
 
-echo "***** creating universallibraries in $TARGET_BUILD_DIR *****"
-mkdir -p "$TARGET_BUILD_DIR"
-lipo -create "$CONFIGURATION_TEMP_DIR/"*-libcrypto.a -output "$TARGET_BUILD_DIR/libcrypto.a"
-lipo -create "$CONFIGURATION_TEMP_DIR/"*-libssl.a -output "$TARGET_BUILD_DIR/libssl.a"
-
-echo "***** removing temporary files from $CONFIGURATION_TEMP_DIR *****"
-rm -f "$CONFIGURATION_TEMP_DIR/"*-libcrypto.a
-rm -f "$CONFIGURATION_TEMP_DIR/"*-libssl.a
-
-echo "***** executing ranlib on libraries in $TARGET_BUILD_DIR *****"
-ranlib "$TARGET_BUILD_DIR/libcrypto.a"
-ranlib "$TARGET_BUILD_DIR/libssl.a"
-                                       
+echo "Ranlib"
+ranlib "$LIBSSLPATH" &> $LOGPATH
+ranlib "$LIBCRYPTOPATH" &> $LOGPATH
