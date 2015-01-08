@@ -69,7 +69,7 @@ do
   archFlag="-arch $ARCH"
 
   echo "Configure with options: $configureOptions"
-  ./config $configureOptions &> $LOGPATH
+  ./Configure $configureOptions &> $LOGPATH
 
   make clean &> $LOGPATH
   
