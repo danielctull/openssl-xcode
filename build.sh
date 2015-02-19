@@ -60,7 +60,7 @@ do
   
   configureTarget="iphoneos-cross"
   if [ "$ARCH" == "i386" ]; then
-    configureTarget="darwin-i386-cc"
+    configureTarget="BSD-generic32"
   elif [ "$ARCH" == "x86_64" ]; then
     configureTarget="darwin64-x86_64-cc"
   fi
