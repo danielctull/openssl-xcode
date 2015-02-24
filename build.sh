@@ -69,28 +69,28 @@ do
   archFlag="-arch $ARCH"
 
   echo "Configure with options: $configureOptions"
-  ./Configure $configureOptions &> $LOGPATH
+  ./Configure $configureOptions > $LOGPATH
 
-  make clean &> $LOGPATH
+  make clean > $LOGPATH
   
   makeOptions="CFLAG=\"-D_DARWIN_C_SOURCE $archFlag $isysroot\" SHARED_LDFLAGS=\"$archFlag -Os\""
   echo "Make with options: $makeOptions" 
-  make CFLAG="-D_DARWIN_C_SOURCE $archFlag $isysroot" SHARED_LDFLAGS="$archFlag -Os" &> $LOGPATH
+  make CFLAG="-D_DARWIN_C_SOURCE $archFlag $isysroot" SHARED_LDFLAGS="$archFlag -Os" > $LOGPATH
 
   echo "Copy libssl.a to ${LIBSSLARCHPATH}"
-  cp libssl.a "${LIBSSLARCHPATH}" &> $LOGPATH
+  cp libssl.a "${LIBSSLARCHPATH}" > $LOGPATH
 
   echo "Copy libcrypto.a to ${LIBCRYPTOARCHPATH}"
-  cp libcrypto.a "${LIBCRYPTOARCHPATH}" &> $LOGPATH
+  cp libcrypto.a "${LIBCRYPTOARCHPATH}" > $LOGPATH
 
-  make clean &> $LOGPATH
+  make clean > $LOGPATH
 done
 
 echo "Lipo"
 mkdir -p "${TARGET_BUILD_DIR}"
-lipo -create "${LIBOUTPUTPATH}/"*-libssl.a -output "$LIBSSLPATH" &> $LOGPATH
-lipo -create "${LIBOUTPUTPATH}/"*-libcrypto.a -output "$LIBCRYPTOPATH" &> $LOGPATH
+lipo -create "${LIBOUTPUTPATH}/"*-libssl.a -output "$LIBSSLPATH" > $LOGPATH
+lipo -create "${LIBOUTPUTPATH}/"*-libcrypto.a -output "$LIBCRYPTOPATH" > $LOGPATH
 
 echo "Ranlib"
-ranlib "$LIBSSLPATH" &> $LOGPATH
-ranlib "$LIBCRYPTOPATH" &> $LOGPATH
+ranlib "$LIBSSLPATH" > $LOGPATH
+ranlib "$LIBCRYPTOPATH" > $LOGPATH
