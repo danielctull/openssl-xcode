@@ -33,7 +33,7 @@ fi
 echo "Building for architectures: $ARCHS"
 
 if [ "$SDKROOT" != "" ]; then
-	isysroot="-isysroot ${SDKROOT}"
+	isysroot="-isysroot ${SDKROOT// /\\ \\}"
 fi
 
 ASM_DEF="-UOPENSSL_BN_ASM_PART_WORDS"
