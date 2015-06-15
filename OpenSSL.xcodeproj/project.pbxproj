@@ -402,7 +402,7 @@
 		2438DD5C18FA877000331C0B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Daniel Tull";
 			};
 			buildConfigurationList = 2438DD5F18FA877000331C0B /* Build configuration list for PBXProject "OpenSSL" */;
@@ -465,6 +465,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
