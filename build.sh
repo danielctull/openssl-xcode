@@ -66,7 +66,7 @@ do
   fi
 
   configureOptions="$configureTarget"
-  archFlag="-arch $ARCH"
+  archFlag="-fembed-bitcode -arch $ARCH"
 
   echo "Configure with options: $configureOptions"
   ./Configure $configureOptions > $LOGPATH
